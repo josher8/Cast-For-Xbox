@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *gamertagField;
+
+- (IBAction)viewClipsBtnPressed:(UIButton *)sender;
+
 
 @end
 

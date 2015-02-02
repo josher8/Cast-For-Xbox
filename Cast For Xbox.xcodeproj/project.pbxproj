@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C7211B41A7F0FD700F7C3A0 /* JSVideoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7211B31A7F0FD700F7C3A0 /* JSVideoList.m */; };
+		0C7211B71A7F100F00F7C3A0 /* JSVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7211B61A7F100F00F7C3A0 /* JSVideos.m */; };
+		0C7211BA1A7F250F00F7C3A0 /* SimpleImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7211B91A7F250F00F7C3A0 /* SimpleImageFetcher.m */; };
+		0C7211BD1A7F27DF00F7C3A0 /* xboxonelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211BC1A7F27DF00F7C3A0 /* xboxonelogo.png */; };
+		0C7211C01A7F2B7700F7C3A0 /* play_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211BE1A7F2B7700F7C3A0 /* play_black.png */; };
+		0C7211C11A7F2B7700F7C3A0 /* play_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211BF1A7F2B7700F7C3A0 /* play_black@2x.png */; };
+		0C7211C41A7F2CAB00F7C3A0 /* JSVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7211C31A7F2CAB00F7C3A0 /* JSVideoPlayer.m */; };
+		0C7211C61A7F2DBD00F7C3A0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7211C51A7F2DBD00F7C3A0 /* CoreMedia.framework */; };
+		0C7211CD1A7F404700F7C3A0 /* appicon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211C81A7F404700F7C3A0 /* appicon58.png */; };
+		0C7211CE1A7F404700F7C3A0 /* appicon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211C91A7F404700F7C3A0 /* appicon80.png */; };
+		0C7211CF1A7F404700F7C3A0 /* appicon87.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211CA1A7F404700F7C3A0 /* appicon87.png */; };
+		0C7211D01A7F404700F7C3A0 /* appicon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211CB1A7F404700F7C3A0 /* appicon120.png */; };
+		0C7211D11A7F404700F7C3A0 /* appicon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C7211CC1A7F404700F7C3A0 /* appicon180.png */; };
 		0C91569B1A7AA7CC00C23840 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C91569A1A7AA7CC00C23840 /* main.m */; };
 		0C91569E1A7AA7CC00C23840 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C91569D1A7AA7CC00C23840 /* AppDelegate.m */; };
 		0C9156A11A7AA7CC00C23840 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9156A01A7AA7CC00C23840 /* ViewController.m */; };
@@ -27,6 +40,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C7211B21A7F0FD700F7C3A0 /* JSVideoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVideoList.h; sourceTree = "<group>"; };
+		0C7211B31A7F0FD700F7C3A0 /* JSVideoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVideoList.m; sourceTree = "<group>"; };
+		0C7211B51A7F100F00F7C3A0 /* JSVideos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVideos.h; sourceTree = "<group>"; };
+		0C7211B61A7F100F00F7C3A0 /* JSVideos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVideos.m; sourceTree = "<group>"; };
+		0C7211B81A7F250F00F7C3A0 /* SimpleImageFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleImageFetcher.h; sourceTree = "<group>"; };
+		0C7211B91A7F250F00F7C3A0 /* SimpleImageFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleImageFetcher.m; sourceTree = "<group>"; };
+		0C7211BC1A7F27DF00F7C3A0 /* xboxonelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xboxonelogo.png; sourceTree = "<group>"; };
+		0C7211BE1A7F2B7700F7C3A0 /* play_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_black.png; sourceTree = "<group>"; };
+		0C7211BF1A7F2B7700F7C3A0 /* play_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_black@2x.png"; sourceTree = "<group>"; };
+		0C7211C21A7F2CAB00F7C3A0 /* JSVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVideoPlayer.h; sourceTree = "<group>"; };
+		0C7211C31A7F2CAB00F7C3A0 /* JSVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVideoPlayer.m; sourceTree = "<group>"; };
+		0C7211C51A7F2DBD00F7C3A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0C7211C81A7F404700F7C3A0 /* appicon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon58.png; sourceTree = "<group>"; };
+		0C7211C91A7F404700F7C3A0 /* appicon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon80.png; sourceTree = "<group>"; };
+		0C7211CA1A7F404700F7C3A0 /* appicon87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon87.png; sourceTree = "<group>"; };
+		0C7211CB1A7F404700F7C3A0 /* appicon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon120.png; sourceTree = "<group>"; };
+		0C7211CC1A7F404700F7C3A0 /* appicon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon180.png; sourceTree = "<group>"; };
 		0C9156951A7AA7CC00C23840 /* Cast For Xbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cast For Xbox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9156991A7AA7CC00C23840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C91569A1A7AA7CC00C23840 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7211C61A7F2DBD00F7C3A0 /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +91,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7211BB1A7F270A00F7C3A0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0C7211C71A7F3F8A00F7C3A0 /* appicons */,
+				0C7211BC1A7F27DF00F7C3A0 /* xboxonelogo.png */,
+				0C7211BE1A7F2B7700F7C3A0 /* play_black.png */,
+				0C7211BF1A7F2B7700F7C3A0 /* play_black@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		0C7211C71A7F3F8A00F7C3A0 /* appicons */ = {
+			isa = PBXGroup;
+			children = (
+				0C7211C81A7F404700F7C3A0 /* appicon58.png */,
+				0C7211C91A7F404700F7C3A0 /* appicon80.png */,
+				0C7211CA1A7F404700F7C3A0 /* appicon87.png */,
+				0C7211CB1A7F404700F7C3A0 /* appicon120.png */,
+				0C7211CC1A7F404700F7C3A0 /* appicon180.png */,
+			);
+			name = appicons;
+			sourceTree = "<group>";
+		};
 		0C91568C1A7AA7CC00C23840 = {
 			isa = PBXGroup;
 			children = (
+				0C7211C51A7F2DBD00F7C3A0 /* CoreMedia.framework */,
 				0C9156971A7AA7CC00C23840 /* Cast For Xbox */,
 				0C9156B11A7AA7CC00C23840 /* Cast For XboxTests */,
 				0C9156961A7AA7CC00C23840 /* Products */,
@@ -81,10 +136,19 @@
 		0C9156971A7AA7CC00C23840 /* Cast For Xbox */ = {
 			isa = PBXGroup;
 			children = (
+				0C7211BB1A7F270A00F7C3A0 /* Images */,
 				0C91569C1A7AA7CC00C23840 /* AppDelegate.h */,
 				0C91569D1A7AA7CC00C23840 /* AppDelegate.m */,
+				0C7211B81A7F250F00F7C3A0 /* SimpleImageFetcher.h */,
+				0C7211B91A7F250F00F7C3A0 /* SimpleImageFetcher.m */,
+				0C7211B51A7F100F00F7C3A0 /* JSVideos.h */,
+				0C7211B61A7F100F00F7C3A0 /* JSVideos.m */,
 				0C91569F1A7AA7CC00C23840 /* ViewController.h */,
 				0C9156A01A7AA7CC00C23840 /* ViewController.m */,
+				0C7211B21A7F0FD700F7C3A0 /* JSVideoList.h */,
+				0C7211B31A7F0FD700F7C3A0 /* JSVideoList.m */,
+				0C7211C21A7F2CAB00F7C3A0 /* JSVideoPlayer.h */,
+				0C7211C31A7F2CAB00F7C3A0 /* JSVideoPlayer.m */,
 				0C9156A21A7AA7CC00C23840 /* Main.storyboard */,
 				0C9156A51A7AA7CC00C23840 /* Images.xcassets */,
 				0C9156A71A7AA7CC00C23840 /* LaunchScreen.xib */,
@@ -199,8 +263,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7211CF1A7F404700F7C3A0 /* appicon87.png in Resources */,
 				0C9156A41A7AA7CC00C23840 /* Main.storyboard in Resources */,
+				0C7211D11A7F404700F7C3A0 /* appicon180.png in Resources */,
 				0C9156A91A7AA7CC00C23840 /* LaunchScreen.xib in Resources */,
+				0C7211CE1A7F404700F7C3A0 /* appicon80.png in Resources */,
+				0C7211D01A7F404700F7C3A0 /* appicon120.png in Resources */,
+				0C7211BD1A7F27DF00F7C3A0 /* xboxonelogo.png in Resources */,
+				0C7211C01A7F2B7700F7C3A0 /* play_black.png in Resources */,
+				0C7211CD1A7F404700F7C3A0 /* appicon58.png in Resources */,
+				0C7211C11A7F2B7700F7C3A0 /* play_black@2x.png in Resources */,
 				0C9156A61A7AA7CC00C23840 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7211B41A7F0FD700F7C3A0 /* JSVideoList.m in Sources */,
+				0C7211B71A7F100F00F7C3A0 /* JSVideos.m in Sources */,
 				0C9156A11A7AA7CC00C23840 /* ViewController.m in Sources */,
 				0C91569E1A7AA7CC00C23840 /* AppDelegate.m in Sources */,
 				0C91569B1A7AA7CC00C23840 /* main.m in Sources */,
+				0C7211C41A7F2CAB00F7C3A0 /* JSVideoPlayer.m in Sources */,
+				0C7211BA1A7F250F00F7C3A0 /* SimpleImageFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +488,7 @@
 				0C9156BA1A7AA7CC00C23840 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C9156BB1A7AA7CC00C23840 /* Build configuration list for PBXNativeTarget "Cast For XboxTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +497,7 @@
 				0C9156BD1A7AA7CC00C23840 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
