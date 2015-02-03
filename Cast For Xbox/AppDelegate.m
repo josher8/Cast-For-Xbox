@@ -17,6 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // Initialize the chromecast device controller.
+    self.chromecastDeviceController = [[ChromecastDeviceController alloc] init];
+    
+    // Scan for devices.
+    [self.chromecastDeviceController performScan:YES];
     return YES;
 }
 

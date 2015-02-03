@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CastInstructionsViewController.h"
 
 @interface JSVideoList : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
@@ -16,5 +17,6 @@
 
 @property (nonatomic, strong) NSMutableArray *jsonArray;
 @property(nonatomic,strong) NSMutableArray *videoArray;
+
 
 @end

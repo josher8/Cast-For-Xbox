@@ -11,8 +11,9 @@
 @interface JSVideos : NSObject
 @property (strong,nonatomic) NSString *titleName;
 @property (strong,nonatomic) NSURL *thumbnailUrl;
+@property (strong,nonatomic) NSURL *largeThumbnailUrl;
 @property (strong,nonatomic) NSURL *videoUrl;
 
--(id)initWithVideoName: (NSString *)titleName andThumbnailUrl:(NSURL *)thumbnailUrl andVideoUrl:(NSURL *)videoUrl;
+-(id)initWithVideoName: (NSString *)titleName andThumbnailUrl:(NSURL *)thumbnailUrl andVideoUrl:(NSURL *)videoUrl andLargeThumbnailUrl:(NSURL *)largeThumbnailUrl;
 
 @end

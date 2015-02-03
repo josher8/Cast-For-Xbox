@@ -10,8 +10,11 @@
 #import "JSVideos.h"
 #import "SimpleImageFetcher.h"
 #import "JSVideoPlayer.h"
+#import "AppDelegate.h"
 
-@interface JSVideoList ()
+@interface JSVideoList (){
+    __weak ChromecastDeviceController *_chromecastController;
+}
 
 @end
 
@@ -23,6 +26,16 @@
     self.navigationController.navigationBar.topItem.title = @"";
     self.navigationItem.title = @"My Game Clips";
     NSLog(@"Gamertag: %@", _gamertag);
+    
+    //Store a reference to the chromecast controller.
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    _chromecastController = delegate.chromecastDeviceController;
+    
+    //Show cast icon if chromecast is available
+    if (_chromecastController.deviceScanner.devices.count > 0) {
+        [self showCastIcon];
+    }
+    
     [self retrieveData];
 }
 
@@ -33,7 +46,64 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationItem.title = @"My Game Clips";
+    
+    _chromecastController.delegate = self;
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [_chromecastController updateToolbarForViewController:self];
+
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
+// instructions highlighting the cast icon.
+- (void) showCastIcon {
+    self.navigationItem.rightBarButtonItem = _chromecastController.chromecastBarButton;
+    [CastInstructionsViewController showIfFirstTimeOverViewController:self];
+}
+- (void)didDiscoverDeviceOnNetwork {
+    // Add the chromecast icon if not present.
+    [self showCastIcon];
+}
+- (void)shouldDisplayModalDeviceController {
+    [self performSegueWithIdentifier:@"listDevices" sender:self];
+}
+/**
+ * Called when connection to the device was established.
+ *
+ * @param device The device to which the connection was established.
+ */
+- (void)didConnectToDevice:(GCKDevice *)device {
+    [_chromecastController updateToolbarForViewController:self];
+}
+
+/**
+ * Called when connection to the device was closed.
+ */
+- (void)didDisconnect {
+    [_chromecastController updateToolbarForViewController:self];
+}
+
+/**
+ * Called when the playback state of media on the device changes.
+ */
+- (void)didReceiveMediaStateChange {
+    [_chromecastController updateToolbarForViewController:self];
+}
+
+- (void)shouldPresentPlaybackController {
+    // Select the item being played in the table, so prepareForSegue can find the
+    // associated Media object.
+    [_chromecastController.mediaInformation.metadata stringForKey:kGCKMetadataKeyTitle];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -61,12 +131,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
-
-    
     
 //    // Configure the cell...
     JSVideos *videoObject = [_videoArray objectAtIndex:indexPath.row];
-
 
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:2];
     titleLabel.text = videoObject.titleName;
@@ -94,46 +161,58 @@
 
 -(void) retrieveData
 {
-    
+    _gamertag = [_gamertag stringByReplacingOccurrencesOfString:@" " withString: @"%20"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.webjosher.net/xboxapi/index.php?gamertag=%@", _gamertag]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    _jsonArray = [NSJSONSerialization JSONObjectWithData:data options: kNilOptions error: nil];
-    _videoArray = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *thumbnail = [[NSMutableArray alloc] init];
-    NSMutableArray *video = [[NSMutableArray alloc] init];
-    
-    for(int i = 0; i < _jsonArray.count; i++)
-    {
-        thumbnail = [[_jsonArray objectAtIndex:i]  valueForKey:@"thumbnails"];
-        video = [[_jsonArray objectAtIndex:i]  valueForKey:@"gameClipUris"];
-        NSString *theTitle = [[_jsonArray objectAtIndex:i] objectForKey:@"titleName"];
-        NSURL *theThumbnail;
-        NSURL *theVideo;
+    @try {
         
-        for(int i = 0; i < thumbnail.count; i++){
-            if([[[thumbnail objectAtIndex:i] objectForKey:@"thumbnailType"] isEqualToString:@"Small"]){
-                    theThumbnail =[NSURL URLWithString:[[thumbnail objectAtIndex:i] objectForKey:@"uri"]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        _jsonArray = [NSJSONSerialization JSONObjectWithData:data options: kNilOptions error: nil];
+        _videoArray = [[NSMutableArray alloc] init];
+        NSMutableArray *thumbnail = [[NSMutableArray alloc] init];
+        NSMutableArray *video = [[NSMutableArray alloc] init];
+        
+        for(int i = 0; i < _jsonArray.count; i++)
+        {
+            thumbnail = [[_jsonArray objectAtIndex:i]  valueForKey:@"thumbnails"];
+            video = [[_jsonArray objectAtIndex:i]  valueForKey:@"gameClipUris"];
+            NSString *theTitle = [[_jsonArray objectAtIndex:i] objectForKey:@"titleName"];
+            NSURL *theThumbnail;
+            NSURL *theLargeThumbnail;
+            NSURL *theVideo;
+            
+            for(int i = 0; i < thumbnail.count; i++){
+                if([[[thumbnail objectAtIndex:i] objectForKey:@"thumbnailType"] isEqualToString:@"Small"]){
+                        theThumbnail =[NSURL URLWithString:[[thumbnail objectAtIndex:i] objectForKey:@"uri"]];
+                    }
+                if([[[thumbnail objectAtIndex:i] objectForKey:@"thumbnailType"] isEqualToString:@"Large"]){
+                    theLargeThumbnail =[NSURL URLWithString:[[thumbnail objectAtIndex:i] objectForKey:@"uri"]];
                 }
-        }
-        
-        for(int i = 0; i < video.count; i++){
-        
-            if([[[video objectAtIndex:i] objectForKey:@"uriType"] isEqualToString:@"Download"]){
-                theVideo = [NSURL URLWithString:[[video objectAtIndex:i] objectForKey:@"uri"]];
             }
+            
+            for(int i = 0; i < video.count; i++){
+            
+                if([[[video objectAtIndex:i] objectForKey:@"uriType"] isEqualToString:@"Download"]){
+                    theVideo = [NSURL URLWithString:[[video objectAtIndex:i] objectForKey:@"uri"]];
+                }
+            }
+            
+            NSLog(@"the Title %@  The Thumbnail %@ the Video %@" , theTitle, theThumbnail, theVideo);
+            
+            //Adds all teh video information to an object in an array
+            [_videoArray addObject:[[JSVideos alloc] initWithVideoName:theTitle andThumbnailUrl:theThumbnail andVideoUrl:theVideo andLargeThumbnailUrl:theLargeThumbnail]];
+            
+            
+            }
+            [self.tableView reloadData];
+        }@catch (NSException *exception) {
+            //Error on retrieving json feed. Go back to home
+            [[[UIAlertView alloc] initWithTitle:@"Gamertag not found"
+                                        message:nil
+                                       delegate:nil cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            NSLog(@"Error: %@", exception);
         }
-        
-        NSLog(@"the Title %@  The Thumbnail %@ the Video %@" , theTitle, theThumbnail, theVideo);
-
-        
-        
-        [_videoArray addObject:[[JSVideos alloc] initWithVideoName:theTitle andThumbnailUrl:theThumbnail andVideoUrl:theVideo]];
-        
-        
-        }
-    [self.tableView reloadData];
     
 }
 
@@ -144,14 +223,13 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //set gamertag variable in the next view controller
-    if ([[segue identifier] isEqualToString:@"segueVideo"]){
+    if ([[segue identifier] isEqualToString:@"segueVideo"] || [[segue identifier] isEqualToString:@"castMedia"] ){
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         JSVideoPlayer *videoPlayer = (JSVideoPlayer *)segue.destinationViewController;
         JSVideos *videoObject = [_videoArray objectAtIndex:indexPath.row];
         
-        videoPlayer.videoUrl = videoObject.videoUrl;
-        videoPlayer.thumbnailUrl = videoObject.thumbnailUrl;
-        videoPlayer.videoTitle = videoObject.titleName;
+        //Send over video object to retrieve ons Video Player controller
+        videoPlayer.mediaToPlay = videoObject;
     }
 }
 

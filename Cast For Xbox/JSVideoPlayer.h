@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "JSVideos.h"
 
 @interface JSVideoPlayer : UIViewController
 
 @property (strong, nonatomic)NSURL *videoUrl;
 @property (strong, nonatomic)NSURL *thumbnailUrl;
 @property (strong, nonatomic)NSString *videoTitle;
+
+@property (strong,nonatomic) JSVideos *mediaToPlay;
 
 
 @property MPMoviePlayerController *moviePlayer;

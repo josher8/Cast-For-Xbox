@@ -10,7 +10,7 @@
 
 @implementation JSVideos
 
--(id)initWithVideoName:(NSString *)titleName andThumbnailUrl:(NSURL *)thumbnailUrl andVideoUrl:(NSURL *)videoUrl
+-(id)initWithVideoName:(NSString *)titleName andThumbnailUrl:(NSURL *)thumbnailUrl andVideoUrl:(NSURL *)videoUrl andLargeThumbnailUrl:(NSURL *)largeThumbnailUrl
 {
     self =[super init];
     if(self)
@@ -18,6 +18,7 @@
         _titleName = titleName;
         _thumbnailUrl = thumbnailUrl;
         _videoUrl = videoUrl;
+        _largeThumbnailUrl = largeThumbnailUrl;
     }
     
     return self;
